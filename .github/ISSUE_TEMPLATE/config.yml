@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Setup Help / How-to Questions
+    url: https://github.com/mukul-07/opensource-sales-ops/discussions
+    about: For setup help and general questions, start a Discussion instead of opening an issue.
+  - name: GitHub Discussions
+    url: https://github.com/mukul-07/opensource-sales-ops/discussions
+    about: For ideas, Q&A, and community conversations.

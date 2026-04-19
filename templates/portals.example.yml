@@ -1,0 +1,98 @@
+# Sales-Ops Sources Configuration (template)
+# Copy to portals.yml in the project root, then customize for your motion.
+#
+# Three discovery sources, in priority order:
+#   1. manual_accounts — named targets you know about
+#   2. lead_db         — Apollo (free company data), Hunter/Snov/Prospeo/Skrapp
+#                        for emails
+#   3. search_queries  — broad WebSearch for ICP-relevant signals
+
+# -- Manual accounts --
+# Companies you've decided to target. qualify mode researches each via
+# WebSearch + Apollo enrichment.
+
+manual_accounts:
+  - name: "Example Co"
+    website: "https://example.com"
+    reason: "Template entry. Replace with real targets in your ICP."
+    enabled: false
+
+# -- Lead databases --
+#
+# Five contact-enrichment sources, all free-tier friendly. Used by:
+#   - scan mode (Apollo organizations/search for ICP-filtered discovery)
+#   - qualify mode Block A (Apollo enrich for company data)
+#   - qualify mode Block D (Hunter/Snov/Prospeo/Skrapp for emails)
+#
+# Setup per source:
+#   1. Sign up — see docs/LEAD_ENRICHMENT.md
+#   2. Grab your API key
+#   3. Set the env var in .env.local (gitignored, never in .envrc)
+#   4. Flip enabled: true here
+#
+# NEVER paste API keys in this file. Keys live in env vars only.
+
+lead_db:
+
+  apollo:
+    enabled: false
+    signup_url: "https://www.apollo.io/sign-up"
+    free_tier: "Rolling credits. Free = orgs only; people endpoints are paid."
+    api_key_env: "APOLLO_API_KEY"
+    organization_enrich_endpoint: "https://api.apollo.io/api/v1/organizations/enrich"
+    organization_search_endpoint: "https://api.apollo.io/api/v1/mixed_companies/search"
+    people_match_endpoint: "https://api.apollo.io/api/v1/people/match"      # paid
+    people_search_endpoint: "https://api.apollo.io/api/v1/mixed_people/search"  # paid
+    response_fields: [name, estimated_num_employees, founded_year, total_funding, latest_funding_stage, industry, keywords, city, country, linkedin_url]
+    notes: "Best for company enrichment on free tier."
+
+  hunter:
+    enabled: false
+    signup_url: "https://hunter.io/users/sign_up"
+    free_tier: "25 searches + 50 verifications / month"
+    api_key_env: "HUNTER_API_KEY"
+    domain_search_endpoint: "https://api.hunter.io/v2/domain-search"
+    email_finder_endpoint: "https://api.hunter.io/v2/email-finder"
+    email_verifier_endpoint: "https://api.hunter.io/v2/email-verifier"
+    response_fields: [email, first_name, last_name, position, linkedin_url, confidence]
+    notes: "Email-specific. Pairs well with Apollo (Apollo for company, Hunter for email)."
+
+  snov:
+    enabled: false
+    signup_url: "https://app.snov.io/register"
+    free_tier: "50 credits / month"
+    api_key_env: "SNOV_API_KEY"
+    oauth_endpoint: "https://api.snov.io/v1/oauth/access_token"
+    domain_search_endpoint: "https://api.snov.io/v2/domain-emails-with-info"
+    email_verifier_endpoint: "https://api.snov.io/v1/email-verifier"
+    response_fields: [email, firstName, lastName, position, sourcePage]
+    notes: "Alternative to Hunter. OAuth2 (SNOV_CLIENT_ID + SNOV_CLIENT_SECRET)."
+
+  prospeo:
+    enabled: false
+    signup_url: "https://prospeo.io/register"
+    free_tier: "~75 credits / month"
+    api_key_env: "PROSPEO_API_KEY"
+    email_finder_endpoint: "https://api.prospeo.io/email-finder"
+    domain_search_endpoint: "https://api.prospeo.io/domain-search"
+    response_fields: [email, first_name, last_name, verified]
+    notes: "Backup email source."
+
+  skrapp:
+    enabled: false
+    signup_url: "https://www.skrapp.io/signup"
+    free_tier: "50 email searches / month"
+    api_key_env: "SKRAPP_API_KEY"
+    email_finder_endpoint: "https://api.skrapp.io/api/v2/find"
+    company_search_endpoint: "https://api.skrapp.io/api/v3/company/search"
+    response_fields: [email, firstName, lastName, position, quality]
+    notes: "Bulk-search friendly."
+
+# -- WebSearch fallback queries --
+# Broad discovery when manual_accounts + Apollo org search aren't enough.
+# scan runs these and deposits candidates in data/pipeline.md.
+
+search_queries:
+  - query: '"Series A" OR "Series B" your-industry "your-target-title"'
+    reason: "Example — replace with queries relevant to your ICP"
+    enabled: false

@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use opensource-sales-ops, please cite it using these metadata."
+title: "opensource-sales-ops: AI-Powered SDR Outbound Pipeline"
+type: software
+authors:
+  - family-names: "Mukul"
+    given-names: "Mukul"
+    alias: "mukul-07"
+url: "https://github.com/mukul-07/opensource-sales-ops"
+repository-code: "https://github.com/mukul-07/opensource-sales-ops"
+license: MIT
+keywords:
+  - ai
+  - sales
+  - sdr
+  - outbound
+  - lead-generation
+  - claude-code
+  - automation
+references:
+  - type: software
+    title: "Career-Ops: AI-Powered Job Search Pipeline"
+    authors:
+      - family-names: "Fernández de Valderrama"
+        given-names: "Santiago"
+    url: "https://github.com/santifer/career-ops"
+    notes: "Original upstream project this was forked from."

@@ -1,0 +1,101 @@
+# Sales-Ops Profile Configuration
+# Copy this file to config/profile.yml and fill in your details.
+# This is the single source of truth for your seller identity and ICP.
+
+seller:
+  full_name: "Jane Smith"
+  email: "jane@acme.com"
+  phone: "+1-555-0123"
+  company: "Acme Inc"
+  title: "Account Executive"
+  linkedin: "linkedin.com/in/janesmith"
+  calendar_link: "https://cal.com/janesmith"
+  # What you sell (1 line) — this shows up in outreach drafts
+  one_liner: "We help Series B fintech cut fraud losses by 60% with realtime ML."
+
+# Your Ideal Customer Profile. The qualify mode scores every prospect
+# against these dimensions. Be specific — vague ICPs produce vague scores.
+icp:
+  # Firmographics
+  industries:
+    - "B2B SaaS"
+    - "Fintech"
+    - "Insurtech"
+  # Exclude industries you do NOT want (hard disqualifier)
+  excluded_industries:
+    - "Gambling"
+    - "Crypto exchanges"
+  company_size:
+    employees_min: 50
+    employees_max: 500
+    # "seed", "series-a", "series-b", "series-c+", "public", "bootstrapped"
+    funding_stages: ["series-b", "series-c+"]
+  geographies:
+    primary: ["United States", "Canada"]
+    secondary: ["United Kingdom", "EU"]
+    excluded: []
+  # Tech stack signals — presence of these suggests fit
+  tech_signals_positive:
+    - "Python"
+    - "Postgres"
+    - "AWS"
+    - "Stripe"
+  # Tech signals that suggest NOT a fit
+  tech_signals_negative:
+    - "On-prem only"
+    - "Mainframe"
+
+  # Buying triggers — recent events that indicate active buying intent.
+  # These boost the Block C (Buying Signals) score.
+  buying_triggers:
+    - "Raised funding in last 6 months"
+    - "Hired VP of Risk / VP of Fraud in last 3 months"
+    - "Announced new product line"
+    - "Posted 3+ backend / risk / fraud roles in last 30 days"
+    - "Migrated off legacy vendor (press release, job posts)"
+
+# Who you sell to. Each persona has a seniority range and the typical
+# pain you solve for them. qualify mode maps contacts to these.
+personas:
+  - name: "VP of Risk"
+    titles: ["VP Risk", "Head of Risk", "Chief Risk Officer", "Director of Risk"]
+    seniority: "VP / Director"
+    primary_pain: "Fraud losses eating into margin; board wants monthly number going down"
+    economic_buyer: true
+  - name: "Head of Fraud"
+    titles: ["Head of Fraud", "Director of Fraud", "Fraud Manager"]
+    seniority: "Director / Manager"
+    primary_pain: "False positives frustrating customers; manual review backlog"
+    economic_buyer: false
+  - name: "VP Engineering"
+    titles: ["VP Engineering", "CTO", "Head of Engineering"]
+    seniority: "VP / C-level"
+    primary_pain: "Engineering time sunk into maintaining homegrown fraud rules"
+    economic_buyer: true
+
+# Deal economics — used by qualify mode to estimate deal size and
+# prioritize prospects.
+deal:
+  typical_acv_usd:
+    floor: 25000
+    target: 80000
+    ceiling: 250000
+  sales_cycle_days:
+    median: 60
+    fast: 30
+    enterprise: 120
+  # Minimum ACV you will pursue — below this, flag SKIP
+  walk_away_acv_usd: 15000
+
+# Disqualifiers — if any are true, mark prospect as No-Fit regardless of score
+disqualifiers:
+  - "Already using {us} competitor under 12mo contract"
+  - "Public statement against third-party fraud vendors"
+  - "Less than 10 employees"
+  - "Pre-revenue / pre-PMF"
+
+# Territory / quota context (optional, helps prioritization)
+quota:
+  annual_usd: 1200000
+  period: "FY26"
+  segment: "Mid-market US"

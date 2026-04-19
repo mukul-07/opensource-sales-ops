@@ -1,0 +1,51 @@
+# Personal data (user fills these)
+data/prospects.md
+data/applications.md
+data/pipeline.md
+data/scan-history.tsv
+data/follow-ups.md
+reports/*.md
+!reports/.gitkeep
+output/*
+!output/.gitkeep
+batch/logs/*
+!batch/logs/.gitkeep
+batch/batch-state.tsv
+batch/batch-input.tsv
+batch/tracker-additions/**/*.tsv
+!batch/tracker-additions/.gitkeep
+jds/*
+!jds/.gitkeep
+leads/*
+!leads/.gitkeep
+
+# User config and customization (never auto-updated)
+config/profile.yml
+portals.yml
+modes/_profile.md
+pitch.md
+case-studies.md
+.update-dismissed
+.update-lock
+
+# Env / secrets (API keys for Apollo, Hunter, etc.)
+# NOTE: .envrc is tracked (Nix direnv boilerplate). Keys go in .env.local.
+.env
+.env.local
+.env.local.*
+!.env.local.example
+
+# Generated
+.resolved-prompt-*
+node_modules/
+bun.lock
+
+# OS
+.DS_Store
+*.mov
+*.mp4
+
+# Claude Code local
+.claude/settings.local.json
+.claude/memory/
+package-lock.json

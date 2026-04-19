@@ -1,0 +1,41 @@
+{
+  "name": "opensource-sales-ops",
+  "version": "0.1.0",
+  "description": "AI-powered Sales Development Representative (SDR) outbound pipeline built on Claude Code",
+  "scripts": {
+    "doctor": "node doctor.mjs",
+    "verify": "node verify-pipeline.mjs",
+    "normalize": "node normalize-statuses.mjs",
+    "dedup": "node dedup-tracker.mjs",
+    "merge": "node merge-tracker.mjs",
+    "update:check": "node update-system.mjs check",
+    "update": "node update-system.mjs apply",
+    "rollback": "node update-system.mjs rollback",
+    "liveness": "node check-liveness.mjs",
+    "patterns": "node analyze-patterns.mjs",
+    "followup": "node followup-cadence.mjs"
+  },
+  "keywords": [
+    "ai",
+    "sales",
+    "sdr",
+    "outbound",
+    "lead-generation",
+    "claude-code",
+    "automation"
+  ],
+  "author": "Mukul (@mukul-07)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mukul-07/opensource-sales-ops"
+  },
+  "bugs": {
+    "url": "https://github.com/mukul-07/opensource-sales-ops/issues"
+  },
+  "homepage": "https://github.com/mukul-07/opensource-sales-ops#readme",
+  "license": "MIT",
+  "dependencies": {
+    "js-yaml": "^4.1.1",
+    "playwright": "^1.58.1"
+  }
+}

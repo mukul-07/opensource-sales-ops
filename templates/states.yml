@@ -1,0 +1,74 @@
+# Sales-Ops — Canonical Stages
+# Source of truth for sales-ops (writer) and dashboard (reader).
+# Both systems MUST use these exact stages.
+#
+# Rule: The stage field in data/prospects.md must contain EXACTLY
+# one of these values (case-insensitive). No markdown bold (**),
+# no dates, no extra text. Dates go in the date column.
+
+states:
+  - id: discovered
+    label: Discovered
+    aliases: [new, lead]
+    description: Prospect surfaced by scan or paste, not yet researched
+    dashboard_group: top-of-funnel
+
+  - id: researched
+    label: Researched
+    aliases: [qualified-pending, evaluated]
+    description: Qualification report written, ICP scored, pending outreach decision
+    dashboard_group: top-of-funnel
+
+  - id: contacted
+    label: Contacted
+    aliases: [outreached, touched, sent]
+    description: First outbound touch sent (email / LinkedIn / call)
+    dashboard_group: outbound
+
+  - id: engaged
+    label: Engaged
+    aliases: [responded, replied]
+    description: Prospect replied or visibly engaged (opened multiple times, viewed profile)
+    dashboard_group: outbound
+
+  - id: meeting-booked
+    label: Meeting-Booked
+    aliases: [meeting, demo-booked, call-booked]
+    description: Discovery call or demo on calendar
+    dashboard_group: pipeline
+
+  - id: qualified
+    label: Qualified
+    aliases: [sql, mql-converted]
+    description: Discovery completed, BANT/MEDDIC confirmed, moving to proposal
+    dashboard_group: pipeline
+
+  - id: proposal
+    label: Proposal
+    aliases: [negotiation, pricing-sent]
+    description: Proposal or pricing sent, in active negotiation
+    dashboard_group: pipeline
+
+  - id: closed-won
+    label: Closed-Won
+    aliases: [won, signed]
+    description: Deal closed and signed
+    dashboard_group: closed
+
+  - id: closed-lost
+    label: Closed-Lost
+    aliases: [lost]
+    description: Went to competitor or decided not to buy
+    dashboard_group: closed
+
+  - id: no-fit
+    label: No-Fit
+    aliases: [disqualified, skip, dq]
+    description: Prospect does not match ICP or hit a disqualifier — do not pursue
+    dashboard_group: closed
+
+  - id: nurture
+    label: Nurture
+    aliases: [later, follow-up-q]
+    description: Not ready now, worth revisiting in 1-2 quarters
+    dashboard_group: later

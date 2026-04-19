@@ -1,6 +1,10 @@
 # Changelog
 
-## [0.1.0] - unreleased
+## [0.1.0] - 2026-04-20
+
+Initial public release as [opensource-sales-ops](https://github.com/mukul-07/opensource-sales-ops).
+
+
 
 Initial fork from [santifer/career-ops](https://github.com/santifer/career-ops) v1.5.0. Repurposing the job-search pipeline into a sales lead-generation / SDR outbound pipeline.
 

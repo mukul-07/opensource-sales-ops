@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.0 (2026-04-21)
+
+
+### Bug Fixes
+
+* **ci:** allow doctor.mjs non-zero exit; drop unused setup-go ([c95fae1](https://github.com/mukul-07/opensource-sales-ops/commit/c95fae1eb948c767de1f743582af8de1005c9934))
+
 ## [0.1.0] - 2026-04-20
 
 Initial public release as [opensource-sales-ops](https://github.com/mukul-07/opensource-sales-ops).

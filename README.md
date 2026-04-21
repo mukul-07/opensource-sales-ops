@@ -4,8 +4,8 @@
 
 Two ways to use it:
 
+- **You need leads?** Tell it your ICP (who you sell to) and run a scan — it discovers new prospects from your named target list, Apollo ICP search, and WebSearch signals (funding news, compliance triggers, persona moves).
 - **You already have a target?** Paste the company name or website — Sales-Ops researches them, figures out if they're a good fit, finds the right person to contact, and drafts personalized outreach.
-- **You need leads?** Tell it your ICP (who you sell to) and run a scan — it discovers new prospects from hiring signals, funding news, web searches, and optional lead databases (Apollo / Hunter / Clay).
 
 Either way, it drafts the outreach. You review and send. It never sends anything on its own.
 
@@ -15,7 +15,7 @@ Either way, it drafts the outreach. You review and send. It never sends anything
 
 Think of it as an SDR (Sales Development Rep) that sits next to you:
 
-1. **Finds prospects** — scans public signals (who's hiring, who just raised money, who fits your ICP) and builds a list of companies worth reaching out to.
+1. **Finds prospects** — scans public signals (companies matching your ICP, recent funding, compliance triggers, relevant news) and builds a list of companies worth reaching out to.
 2. **Qualifies each one** — writes a one-page report: are they a real fit? who's the decision-maker? what's the hook? any red flags?
 3. **Drafts outreach** — 3 email variants, a LinkedIn DM, a call opener, a voicemail script. All personalized. All in your voice.
 4. **Tracks follow-ups** — reminds you who's overdue, drafts the next touch with a fresh angle, and writes the breakup message if they go cold.
@@ -46,8 +46,9 @@ You **do** need someone technical for the **one-time setup** (installing Node.js
 
 ```
 You:       scan
-Sales-Ops: Found 12 new companies matching your ICP. 4 are hiring for roles
-           that signal they need what you sell. Want me to qualify them?
+Sales-Ops: Found 12 new companies matching your ICP. 4 look like strong
+           fits based on recent funding and role patterns. Want me to
+           qualify them?
 
 You:       yes, top 4
 Sales-Ops: [writes 4 reports, adds to tracker]
@@ -67,74 +68,67 @@ Sales-Ops: 4 prospects haven't heard from you in 5+ days. Want drafts?
 
 ---
 
-## Quick setup (technical, one-time)
+## Quick start
+
+**See [USAGE.md](USAGE.md) for the full step-by-step guide** (setup, commands, what each one produces, free-tier reality check, troubleshooting).
+
+Fast path (assumes Node.js 18+ and [Claude Code](https://claude.com/claude-code) installed):
 
 ```bash
 git clone https://github.com/mukul-07/opensource-sales-ops.git
 cd opensource-sales-ops
 npm install
-npx playwright install chromium   # required
-node doctor.mjs                   # shows what's missing
+npx playwright install chromium
+node doctor.mjs            # shows what's missing
 
-# Set up your 4 personalization files (the assistant will walk you through this):
+# Set up the 4 user-layer files (details in USAGE.md):
 cp config/profile.example.yml config/profile.yml
 cp templates/portals.example.yml portals.yml
 cp modes/_profile.template.md modes/_profile.md
-# Create pitch.md and case-studies.md from scratch (or let the agent do it)
+# Create pitch.md and case-studies.md from scratch
 
-# (Optional) API keys for lead enrichment — see docs/LEAD_ENRICHMENT.md
+# (Optional) Lead-enrichment API keys — see docs/LEAD_ENRICHMENT.md
 cp .env.local.example .env.local
 
-# Start the assistant:
+# Run Claude Code:
 claude
 
-# In the chat:
-/sales-ops                    # menu of things you can do
-/sales-ops stripe.com         # qualify a company
-/sales-ops scan               # find new prospects
+# In the session:
+/sales-ops                    # discovery menu
+/sales-ops {company-url}      # auto-pipeline: qualify + report + tracker
+/sales-ops scan               # discover new prospects via manual + Apollo + WebSearch
+/sales-ops pipeline           # qualify the URLs in data/pipeline.md
 ```
-
-Full walkthrough (including what each file is for) is in [USAGE.md](USAGE.md).
-
----
-
-## Principles
-
-- **Human in the loop, always.** Sales-Ops drafts. You send.
-- **Quality over volume.** One personalized touch beats 100 spray-and-pray emails.
-- **Yours to customize.** Buyer profiles, tone of voice, scoring rules, cadence — all editable. Just ask the assistant in English and it'll update the config.
-- **Your data stays local.** Reports, trackers, customer notes live in your folder. Nothing is uploaded anywhere you don't control.
 
 ---
 
 ## Status
 
-**v0.1.0 — early release.** Core flow works, expect rough edges. Forked from [santifer/career-ops](https://github.com/santifer/career-ops) (originally an AI job-search tool) and repurposed for outbound sales.
+**v0.1.0 — early public release.** Core flow works, but expect rough edges:
 
-Not yet in v0:
-- CRM integration (tracker is a markdown file for now)
-- Non-English languages
-- Automatic upstream updates
+- Upstream update pull is intentionally disabled. Re-enable in [update-system.mjs](update-system.mjs) by repointing URLs to your own fork.
+- Some `.mjs` scripts still use inherited field names (archetype, remote policy, etc.). They run correctly but the field semantics are being repurposed gradually.
+- No CRM integration yet. Tracker is markdown-only (`data/prospects.md`).
+- English only in v0. Add localization per-market if needed.
 
----
+## Stack
 
-## Under the hood (for the curious / technical)
+- Node.js (mjs modules), Playwright (scraping + verification)
+- YAML config, Markdown data
+- [Claude Code](https://claude.com/claude-code) (primary) + [OpenCode](https://opencode.ai) (secondary) as the agent runtimes
 
-- Node.js scripts, Playwright for web scraping, YAML for config, Markdown for data
-- Runs on top of [Claude Code](https://claude.com/claude-code) or [OpenCode](https://opencode.ai) as the AI agent
-- No server, no database — everything is files on your machine
+## Ethical notes
 
-See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the full design.
+Outbound done badly wastes everyone's time. A few rules built into the system:
 
----
+- Don't fake case studies, don't manufacture urgency, don't namedrop people you don't know.
+- Don't run mass sends. The point of this is better-targeted, not more-frequent.
+- Respect prospect attention. Every cold touch costs someone 30 seconds; make it worth reading.
 
-## Ethical ground rules
+## Contributing
 
-- Don't fake case studies or metrics.
-- Don't name-drop people you don't actually know.
-- Don't manufacture false urgency ("spots filling!" when they aren't).
-- Don't run mass sends. Respect the 30 seconds of attention every cold email costs someone.
+See [CONTRIBUTING.md](CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md). Issues and discussions welcome.
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT — see [LICENSE](LICENSE). Originally forked from [santifer/career-ops](https://github.com/santifer/career-ops) (also MIT), then repurposed from job-search automation into outbound sales.

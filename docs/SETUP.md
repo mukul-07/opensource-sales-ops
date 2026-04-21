@@ -10,7 +10,7 @@ For the high-level pitch, see [README.md](../README.md).
 - **Node.js 18+**
 - **Claude Code CLI** installed and authenticated
 - (Optional) **direnv** — `brew install direnv` — auto-loads `.env.local` on `cd`
-- (Optional) **Playwright Chromium** — `npx playwright install chromium` — for rendering JS-heavy sites during qualification
+- **Playwright Chromium** (required) — `npx playwright install chromium` — for prospect verification, rendering JS-heavy sites, and PDF generation. Batch mode (`claude -p`) falls back to WebFetch.
 
 ## Install
 

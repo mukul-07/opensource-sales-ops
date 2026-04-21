@@ -39,7 +39,7 @@ npm install
 node doctor.mjs
 ```
 
-Expect checks for: Node version, dependencies, Playwright (optional), pitch.md (missing at first), profile.yml (missing at first), case-studies.md (missing at first), portals.yml (missing at first).
+Expect checks for: Node version, dependencies, Playwright Chromium (required — run `npx playwright install chromium` if missing), pitch.md (missing at first), profile.yml (missing at first), case-studies.md (missing at first), portals.yml (missing at first).
 
 All the "missing" ones get created in the next steps.
 

@@ -6,7 +6,7 @@ sales-ops supports Codex (and any agent runtime that reads project-level `AGENTS
 
 - Agent client that reads project `AGENTS.md`
 - Node.js 18+
-- (Optional) Playwright Chromium — `npx playwright install chromium`
+- Playwright Chromium (required) — `npx playwright install chromium` — used for mandatory prospect verification and PDF rendering; batch mode falls back to WebFetch
 - (Optional) direnv — auto-loads `.env.local`
 
 ## Install

@@ -24,6 +24,7 @@ Fast path:
 git clone https://github.com/mukul-07/opensource-sales-ops.git
 cd opensource-sales-ops
 npm install
+npx playwright install chromium   # required for verification + PDF rendering
 node doctor.mjs      # shows what's missing
 
 # Set up the 4 user-layer files (details in USAGE.md):

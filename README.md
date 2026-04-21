@@ -4,7 +4,7 @@
 
 Two ways to use it:
 
-- **You need leads?** Tell it your ICP (who you sell to) and run a scan — it discovers new prospects from your named target list, Apollo ICP search, and WebSearch signals (funding news, compliance triggers, persona moves).
+- **You need leads?** Tell it your ICP (who you sell to) and run a scan — it discovers new prospects from your named target list, WebSearch signals (funding news, role postings, trigger events), and optional lead databases (Apollo, Hunter, Snov, Prospeo, Skrapp).
 - **You already have a target?** Paste the company name or website — Sales-Ops researches them, figures out if they're a good fit, finds the right person to contact, and drafts personalized outreach.
 
 Either way, it drafts the outreach. You review and send. It never sends anything on its own.

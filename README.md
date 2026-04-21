@@ -1,5 +1,7 @@
 # Sales-Ops
 
+![Sales-Ops — your AI sales assistant for outbound. Two ways in: lead discovery or targeted research. Research & qualify, draft personalized outreach, you review & send.](docs/sales-ops-banner.png)
+
 **Your AI sales assistant that does the boring parts of outbound, so you can focus on actual conversations.**
 
 Two ways to use it:

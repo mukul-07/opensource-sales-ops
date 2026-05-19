@@ -1,3 +1,10 @@
+> **For AI agents only.**
+> This file contains instructions for AI coding assistants (Claude Code, OpenCode, etc.) — what onboarding to run, the data contract, ethical-use rules, and prospect-verification mandates.
+>
+> **Humans:** start with [README.md](README.md) and [USAGE.md](USAGE.md) instead. This file is auto-loaded by the agent at session start; you don't need to read it.
+
+---
+
 # Sales-Ops -- AI SDR Outbound Pipeline
 
 ## Origin

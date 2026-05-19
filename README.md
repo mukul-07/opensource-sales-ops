@@ -1,5 +1,10 @@
 # Sales-Ops
 
+[![Tests](https://github.com/mukul-07/opensource-sales-ops/actions/workflows/test.yml/badge.svg)](https://github.com/mukul-07/opensource-sales-ops/actions/workflows/test.yml)
+[![CodeQL](https://github.com/mukul-07/opensource-sales-ops/actions/workflows/codeql.yml/badge.svg)](https://github.com/mukul-07/opensource-sales-ops/actions/workflows/codeql.yml)
+[![License: MIT](https://img.shields.io/github/license/mukul-07/opensource-sales-ops)](LICENSE)
+[![Node](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org)
+
 ![Sales-Ops — your AI sales assistant for outbound. Two ways in: lead discovery or targeted research. Research & qualify, draft personalized outreach, you review & send.](docs/sales-ops-banner.png)
 
 **Your AI sales assistant that does the boring parts of outbound, so you can focus on actual conversations.**
